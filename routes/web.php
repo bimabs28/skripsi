@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HumidityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PHController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,7 @@ use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/humidity', [HumidityController::class, 'index']) -> name ('humidity');
-Route::get('/electrical_conductivity', [ECController
-::class, 'index']) -> name ('electrical_conductivity');
-Route::get('/third_page', [HomeController::class, 'third_page']);
+Route::get('/electrical_conductivity', [ECController::class, 'index']) -> name ('electrical_conductivity');
+Route::get('/ph', [PHController::class, 'index']) -> name ('ph');
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])-> name('mahasiswa');

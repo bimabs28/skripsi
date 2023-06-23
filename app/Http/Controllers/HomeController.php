@@ -23,8 +23,8 @@ class HomeController extends Controller
         return view('ec');
      }
 
-     public function third_page(){
-        return view('third_page');
+     public function ph(){
+        return view('ph');
      }
 
      public function mahasiswa(){

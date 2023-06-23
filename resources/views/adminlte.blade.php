@@ -216,9 +216,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url("/third_page") }}" class="nav-link {{ (app('request')->route()->uri() == "third_page") ? "active" : ""}}">
+                <a href="{{ url("/ph") }}" class="nav-link {{ (app('request')->route()->uri() == "ph") ? "active" : ""}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Third Page</p>
+                  <p>pH</p>
                 </a>
               </li>
               <li class="nav-item">
