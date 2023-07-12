@@ -1,13 +1,19 @@
 @extends('adminlte')
 
 @section('content')
+<div class="card-body d-flex flex-center flex-column" style="width: 600px; height:350px;">
+    <!-- Find the JS file for the following chart at: src/js/charts/echarts/bandwidth-saved.js-->
+    <!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js-->
+    <canvas id="humidity" width="350"></canvas>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
-<canvas id="myChart"></canvas>
+
 <script>
     var labels = @json($labels);
     var humidity = @json($humidity);
 
-    var ctx = document.getElementById("myChart").getContext('2d');
+    var ctx = document.getElementById("humidity").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'line',
 			data: {

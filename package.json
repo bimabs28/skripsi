@@ -16,6 +16,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@canvasjs/charts": "^3.7.10",
         "chart.js": "^4.3.0"
     }
 }
