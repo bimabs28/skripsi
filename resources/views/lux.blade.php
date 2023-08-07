@@ -1,21 +1,21 @@
 @extends('adminlte')
 
 @section('content')
-<canvas id="phChart"></canvas>
+<canvas id="luxChart"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 
 <script>
-    var labels = @json($labels);
-    var ph_data = @json($ph_data);
-    var ctx = document.getElementById("phChart").getContext('2d');
-		var phChart = new Chart(ctx, {
+var labels = @json($labels);
+    var lux = @json($lux);
+    var ctx = document.getElementById("luxChart").getContext('2d');
+		var luxChart = new Chart(ctx, {
 			type: 'line',
 			data: {
         labels: labels,
         datasets: [{
-            label: 'pH',
-            data: ph_data,
+            label: 'Luminosity',
+            data: lux,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -45,9 +45,9 @@
         }
     }
 });
-//end of chart PH
+//end of chart lux
 
-//realtime chart ph
+//realtime chart lux
 function addData(chart, label, data) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset) => {
@@ -57,15 +57,15 @@ function addData(chart, label, data) {
 }
 
 setInterval(function() {
-  fetch('/readdata2') // Ganti URL sesuai dengan endpoint atau route yang telah Anda buat di server-side
+  fetch('/readdata3') // Ganti URL sesuai dengan endpoint atau route yang telah Anda buat di server-side
     .then(response => response.json())
     .then(data => {
-        addData(phChart,data['time_ph'], data['ph_level'])
+        addData(luxChart,data['time_lux'], data['lux_data'])
     })
     .catch(error => {
         console.error('Error fetching data:', error);
     });
 }, 10000);
-//end of realtime chart ph
+//end of realtime chart lux
 </script>
 @endsection

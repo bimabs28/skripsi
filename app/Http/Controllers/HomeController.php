@@ -23,8 +23,8 @@ class HomeController extends Controller
         return view('ec');
      }
 
-     public function ph(){
-        return view('ph');
+     public function chart(){
+        return view('chart');
      }
 
      public function mahasiswa(){

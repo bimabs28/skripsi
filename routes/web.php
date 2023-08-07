@@ -4,7 +4,9 @@ use App\Http\Controllers\ECController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HumidityController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\LuxController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\ChartController2;
 use App\Http\Controllers\PHController;
 
 /*
@@ -19,8 +21,12 @@ use App\Http\Controllers\PHController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/humidity', [HumidityController::class, 'index']) -> name ('humidity');
-Route::get('/electrical_conductivity', [ECController::class, 'index']) -> name ('electrical_conductivity');
-Route::get('/ph', [PHController::class, 'index']) -> name ('ph');
-
-Route::get('/mahasiswa', [MahasiswaController::class, 'index'])-> name('mahasiswa');
+Route::get('/chart/humidity', [HumidityController::class, 'index']) -> name ('humidity');
+Route::get('/chart/electrical_conductivity', [ECController::class, 'index']) -> name ('electrical_conductivity');
+Route::get('/chart/ph', [PHController::class, 'index']) -> name ('ph');
+Route::get('/chart', [ChartController::class, 'index']) -> name ('chart');
+Route::get('/readdata', [ChartController::class, 'readdata']) -> name ('readdata');
+Route::get('/readdata2', [ChartController::class, 'readdata2']) -> name ('readdata2');
+Route::get('/readdata3', [ChartController::class, 'readdata3']) -> name ('readdata3');
+Route::get('/chart/luminosity', [LuxController::class, 'index'])-> name('lux');
+Route::get('/chart2', [ChartController2::class, 'index']) -> name ('chart2');

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class HumidityModel extends Model
+class LuxModel extends Model
 {
-    protected $table = 'tbl_kelembapan';
+    protected $table = 'tbl_lux';
 }

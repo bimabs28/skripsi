@@ -1,11 +1,7 @@
 @extends('adminlte')
 
 @section('content')
-<div class="card-body d-flex flex-center flex-column" style="width: 600px; height:350px;">
-    <!-- Find the JS file for the following chart at: src/js/charts/echarts/bandwidth-saved.js-->
-    <!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js-->
-    <canvas id="humidity" width="350"></canvas>
-</div>
+<canvas id="humidityChart"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 
@@ -13,8 +9,8 @@
     var labels = @json($labels);
     var humidity = @json($humidity);
 
-    var ctx = document.getElementById("humidity").getContext('2d');
-		var myChart = new Chart(ctx, {
+    var ctx = document.getElementById("humidityChart").getContext('2d');
+		var humidityChart = new Chart(ctx, {
 			type: 'line',
 			data: {
         labels: labels,
@@ -50,5 +46,28 @@
         }
     }
 });
+
+function addData(chart, label, data) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.push(data);
+  });
+  chart.update();
+}
+
+setInterval(function() {
+  fetch('/readdata') // Ganti URL sesuai dengan endpoint atau route yang telah Anda buat di server-side
+    .then(response => response.json())
+    .then(data => {
+        // Di sini, Anda dapat mengolah dat a yang didapatkan dari tabel MySQL dan menambahkannya ke chart
+        // Misalnya, jika Anda menggunakan Chart.js, Anda bisa memanggil fungsi addData(humidityChart, newLabel, newData) dengan data yang diolah
+        // addData(humidityChart, data.label, data.value);
+        addData(humidityChart,data['time_kelembapan'], data['persentasi_kelembapan'])
+        //console.log(data['time_kelembapan']);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}, 10000);
 </script>
 @endsection

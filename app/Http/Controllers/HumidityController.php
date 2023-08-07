@@ -12,9 +12,15 @@ class HumidityController extends Controller
     {
 
         $data = \App\Models\HumidityModel::all();
-        $labels = $data->pluck('date_humidity')->toArray();
-        $humidity = $data->pluck('humidity_percentage')->toArray();
+        $labels = $data->pluck('time_kelembapan')->toArray();
+        $humidity = $data->pluck('persentasi_kelembapan')->toArray();
 
         return view('humidity', ['data' => $data, 'labels' => $labels, 'humidity' => $humidity]);
+    }
+
+    public function mycoolfunction(){
+        $data = \App\Models\HumidityModel::orderBy('time_kelembapan', 'DESC')->first();
+        //$ph_data = $data->orderby('time_kelembapan', 'DESC')-> get();
+        return response()->json($data);
     }
 }
