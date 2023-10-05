@@ -17,9 +17,4 @@ class LuxController extends Controller
 
         return view('lux', ['data' => $data, 'labels' => $labels, 'lux' => $lux]);
     }
-
-    public function mycoolfunction(){
-        $data = \App\Models\LuxModel::orderBy('time_lux', 'DESC')->first();
-        return response()->json($data);
-    }
 }

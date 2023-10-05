@@ -27,18 +27,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="/chart" class="nav-link">Home</a>
       </li>
-      <li class="nav-item dropdown">
-        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Sensor 1</a>
-        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-        <li><a href="{{ url('/chart/ph') }}" class="dropdown-item">pH</a></li>
-        <li><a href="{{ url('/chart/humidity') }}" class="dropdown-item">Humidity</a></li>
-        <li><a href="{{ url('/chart/electrical_conductivity') }}" class="dropdown-item">Electrical Conductivity</a></li>
-        <li><a href="{{ url('/chart/luminosity') }}" class="dropdown-item">Luminosity</a></li>
-        </ul>
-        </li>
-        </ul>
+        <li class="nav-item dropdown">
+          <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Sensor 1</a>
+          <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+          <li><a href="{{ url('/chart/ph') }}" class="dropdown-item">pH</a></li>
+          <li li><a href="{{ url('/chart/humidity') }}" class="dropdown-item">Humidity</a></li>
+          <li><a href="{{ url('/chart/electrical_conductivity') }}" class="dropdown-item">Electrical Conductivity</a></li>
+          <li><a href="{{ url('/chart/luminosity') }}" class="dropdown-item">Luminosity</a></li>
+          </ul>
+          </li>
+      </ul>
         
     </ul>
   </nav>

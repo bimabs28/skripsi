@@ -12,7 +12,7 @@ class ECController extends Controller
     {
 
         $data = \App\Models\ECModel::all();
-        $labels = $data->pluck('date_ec')->toArray();
+        $labels = $data->pluck('time_ec')->toArray();
         $electrical_conductivity = $data->pluck('electrical_conductivity')->toArray();
 
         return view('ec', ['data' => $data, 'labels' => $labels, 'electrical_conductivity' => $electrical_conductivity]);

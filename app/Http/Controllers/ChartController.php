@@ -19,7 +19,7 @@ class ChartController extends Controller
         $data3 = \App\Models\HumidityModel::all();
         $data4 = \App\Models\LuxModel::all();
         $labels = $data->pluck('time_ph')->toArray();
-        $labels2 = $data2->pluck('date_ec')->toArray();
+        $labels2 = $data2->pluck('time_ec')->toArray();
         $labels3 = $data3->pluck('time_kelembapan')->toArray();
         $labels4 = $data4->pluck('time_lux')->toArray();
         $ph_data = $data->pluck('ph_level')->toArray();
@@ -43,5 +43,10 @@ class ChartController extends Controller
     public function readdata3(){
         $data3 = \App\Models\LuxModel::orderBy('time_lux', 'DESC')->first();
         return response()->json($data3);
+    }
+
+    public function readdata4(){
+        $data4 = \App\Models\ECModel::orderBy('time_ec', 'DESC')->first();
+        return response()->json($data4);
     }
 }

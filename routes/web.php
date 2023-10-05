@@ -28,5 +28,6 @@ Route::get('/chart', [ChartController::class, 'index']) -> name ('chart');
 Route::get('/readdata', [ChartController::class, 'readdata']) -> name ('readdata');
 Route::get('/readdata2', [ChartController::class, 'readdata2']) -> name ('readdata2');
 Route::get('/readdata3', [ChartController::class, 'readdata3']) -> name ('readdata3');
+Route::get('/readdata4', [ChartController::class, 'readdata4']) -> name ('readdata4');
 Route::get('/chart/luminosity', [LuxController::class, 'index'])-> name('lux');
 Route::get('/chart2', [ChartController2::class, 'index']) -> name ('chart2');

@@ -141,6 +141,27 @@ var ctx_2 = document.getElementById("ecChart").getContext('2d');
 });
 //end of chart ec
 
+//realtime chart ec
+function addData(chart, label, data) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.push(data);
+  });
+  chart.update();
+}
+
+setInterval(function() {
+  fetch('/readdata4') // Ganti URL sesuai dengan endpoint atau route yang telah Anda buat di server-side
+    .then(response => response.json())
+    .then(data => {
+        addData(ecChart,data['time_ec'], data['electrical_conductivity'])
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}, 10000);
+//end of realtime chart ec
+
 //chart humidity
 var labels3 = @json($labels3);
 var humidity = @json($humidity);

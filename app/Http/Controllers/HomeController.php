@@ -27,7 +27,7 @@ class HomeController extends Controller
         return view('chart');
      }
 
-     public function mahasiswa(){
-      return view('mahasiswa');
+     public function luminosity(){
+      return view('lux');
    }
 }

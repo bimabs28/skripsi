@@ -17,10 +17,4 @@ class PHController extends Controller
 
         return view('ph', ['data' => $data, 'labels' => $labels, 'ph_data' => $ph_data]);
     }
-
-    public function mycoolfunction(){
-        $data = \App\Models\PHModel::orderBy('time_ph', 'DESC')->first();
-        //$ph_data = $data->orderby('time_kelembapan', 'DESC')-> get();
-        return response()->json($data);
-    }
 }

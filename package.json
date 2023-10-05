@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@canvasjs/charts": "^3.7.10",
-        "chart.js": "^4.3.0"
+        "chart.js": "^4.3.0",
+        "codemirror": "^6.0.1"
     }
 }

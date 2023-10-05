@@ -7,6 +7,50 @@
     <h1 class="m-0">Sensor 2</h1>
 </div>
 
+<div class="row">
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <p>Humidity</p>
+        </div>
+        <a href="{{ url('/chart/humidity') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+          <p>pH</p>
+        </div>
+        <a href="{{ url('/chart/ph') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <p>Luminosity</p>
+        </div>
+        <a href="{{ url('/chart/luminosity') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <p>Electrical Conductivity</p>
+        </div>
+        <a href="{{ url('/chart/electrical_conductivity') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+  
+
 <div class='d-flex p-2 flex-wrap'>
     <div class="card-body d-flex flex-center flex-column" style="width: 600px; height:350px;">
         <!-- Find the JS file for the following chart at: src/js/charts/echarts/bandwidth-saved.js-->
@@ -29,7 +73,7 @@
     <div class="card-body d-flex flex-center flex-column" style="width: 600px; height:350px;">
         <!-- Find the JS file for the following chart at: src/js/charts/echarts/bandwidth-saved.js-->
         <!-- If you are not using gulp based workflow, you can find the transpiled code at: public/assets/js/theme.js-->
-        <canvas id="mhsChart" width="350"></canvas>
+        <canvas id="luxChart" width="350"></canvas>
     </div>
 </div>
 
@@ -104,7 +148,7 @@ var electrical_conductivity = @json($electrical_conductivity);
 
 var ctx_2 = document.getElementById("ecChart").getContext('2d');
 		var ecChart = new Chart(ctx_2, {
-			type: 'line',
+			type: 'bar',
 			data: {
         labels: labels2,
         datasets: [{
@@ -140,6 +184,27 @@ var ctx_2 = document.getElementById("ecChart").getContext('2d');
     }
 });
 //end of chart ec
+
+//realtime chart ec
+function addData(chart, label, data) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.push(data);
+  });
+  chart.update();
+}
+
+setInterval(function() {
+  fetch('/readdata4') // Ganti URL sesuai dengan endpoint atau route yang telah Anda buat di server-side
+    .then(response => response.json())
+    .then(data => {
+        addData(ecChart,data['time_ec'], data['electrical_conductivity'])
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}, 10000);
+//end of realtime chart ec
 
 //chart humidity
 var labels3 = @json($labels3);
@@ -210,19 +275,17 @@ setInterval(function() {
 //end of realtime chart humidity
 
 
-
-
+//chart lux
 var labels4 = @json($labels4);
-    var jumlah = @json($jumlah);
-
-    var ctx_4 = document.getElementById("mhsChart").getContext('2d');
-		var myChart = new Chart(ctx_4, {
+    var lux = @json($lux);
+    var ctx_4 = document.getElementById("luxChart").getContext('2d');
+		var luxChart = new Chart(ctx_4, {
 			type: 'line',
 			data: {
         labels: labels4,
         datasets: [{
-            label: 'Jumlah',
-            data: jumlah,
+            label: 'Luminosity',
+            data: lux,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -252,6 +315,28 @@ var labels4 = @json($labels4);
         }
     }
 });
+//end of chart lux
+
+//realtime chart lux
+function addData(chart, label, data) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.push(data);
+  });
+  chart.update();
+}
+
+setInterval(function() {
+  fetch('/readdata3') // Ganti URL sesuai dengan endpoint atau route yang telah Anda buat di server-side
+    .then(response => response.json())
+    .then(data => {
+        addData(luxChart,data['time_lux'], data['lux_data'])
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}, 10000);
+//end of realtime chart lux
 
 </script>
 @endsection
