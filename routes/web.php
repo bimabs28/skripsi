@@ -22,7 +22,7 @@ use App\Http\Controllers\PHController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/chart/humidity', [HumidityController::class, 'index']) -> name ('humidity');
-Route::get('/chart/electrical_conductivity', [ECController::class, 'index']) -> name ('electrical_conductivity');
+Route::get('/chart/line_chart', [ECController::class, 'index']) -> name ('line_chart');
 Route::get('/chart/ph', [PHController::class, 'index']) -> name ('ph');
 Route::get('/chart', [ChartController::class, 'index']) -> name ('chart');
 Route::get('/readdata', [ChartController::class, 'readdata']) -> name ('readdata');
