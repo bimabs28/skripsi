@@ -76,18 +76,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item"><a href="{{ url('/chart/ph') }}"
+                <li class="nav-item"><a href="{{ url('/chart/bar_chart') }}"
                     class="nav-link {{ app('request')->route()->uri() == 'chart'? 'active': '' }}"><i
-                      class="far fa-circle nav-icon"></i> pH</a></li>
-                <li class="nav-item"><a href="{{ url('/chart/humidity') }}"
+                      class="far fa-circle nav-icon"></i> Bar Chart</a></li>
+                <li class="nav-item"><a href="{{ url('/chart/radar_chart') }}"
                     class="nav-link {{ app('request')->route()->uri() == 'chart'? 'active': '' }}"><i
-                      class="far fa-circle nav-icon"></i> Humidity</a></li>
+                      class="far fa-circle nav-icon"></i> Radar Chart</a></li>
+                <li class="nav-item"><a href="{{ url('/chart/pie_chart') }}"
+                    class="nav-link {{ app('request')->route()->uri() == 'chart'? 'active': '' }}"><i
+                      class="far fa-circle nav-icon"></i> Pie Chart</a></li>
                 <li class="nav-item"><a href="{{ url('/chart/line_chart') }}"
                     class="nav-link {{ app('request')->route()->uri() == 'chart'? 'active': '' }}"><i
                       class="far fa-circle nav-icon"></i> Line Chart</a></li>
-                <li class="nav-item"><a href="{{ url('/chart/luminosity') }}"
-                    class="nav-link {{ app('request')->route()->uri() == 'chart'? 'active': '' }}"><i
-                      class="far fa-circle nav-icon"></i> Luminosity</a></li>
               </ul>
             </li>
 

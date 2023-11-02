@@ -4,48 +4,34 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
   <canvas id="ecChart"></canvas>
   <div class="container">
-    <h1 class="fw-bold">Line Chart</h1>
-
-    <p>Line chart adalah salah satu jenis visualisasi data yang umum digunakan dalam 
-      Internet of Things (IoT) untuk memahami dan menganalisis data sensor atau data real time. 
-      Berikut beberapa contoh penggunaan line chart dalam IoT:
+    <h1 class="fw-bold">Pie Chart</h1>
+    <p>Grafik pie (pie chart) adalah jenis visualisasi data yang jarang digunakan dalam konteks Internet of Things (IoT). 
+      Grafik pie biasanya digunakan untuk menggambarkan pembagian persentase komponen dari suatu keseluruhan, 
+      dan dalam banyak kasus, data IoT bersifat lebih dinamis dan kontinu daripada data yang dapat direpresentasikan dengan baik oleh grafik pie. 
+      Meskipun demikian, ada beberapa situasi di mana Anda mungkin menggunakan grafik pie dalam IoT:
     </p>
 
     <p>
-      1. Pemantauan Suhu: Dalam aplikasi IoT, Anda mungkin memiliki sensor suhu yang mengukur suhu sepanjang waktu. 
-      Dengan menggunakan line chart, Anda dapat memvisualisasikan data suhu seiring waktu, 
-      yang memungkinkan Anda untuk memahami pola perubahan suhu sepanjang hari, minggu, atau bulan.
+      1. Distribusi Sumber Daya: Jika Anda ingin memvisualisasikan distribusi sumber daya 
+      (seperti alokasi anggaran, tenaga kerja, atau sumber daya fisik) di dalam solusi IoT, 
+      grafik pie dapat digunakan untuk menggambarkan persentase penggunaan sumber daya.
     </p>
 
     <p>
-      2. Pemantauan Kelembaban: Sensor kelembaban dapat digunakan untuk memonitor tingkat kelembaban dalam suatu lingkungan. 
-      Line chart dapat membantu Anda melihat fluktuasi kelembaban sepanjang waktu dan mengidentifikasi tren.
+      2. Komposisi Sensor atau Perangkat: Anda dapat menggunakan grafik pie untuk menggambarkan komposisi perangkat atau sensor dalam suatu sistem IoT. 
+      Misalnya, jika Anda memiliki jaringan sensor dengan berbagai jenis sensor, grafik pie dapat menunjukkan berapa banyak sensor dari masing-masing jenis.
     </p>
 
     <p>
-      3. Pemantauan Kualitas Udara: Sensor kualitas udara dalam IoT dapat mengukur parameter seperti partikel debu, konsentrasi gas, atau indeks polusi. 
-      Line chart dapat digunakan untuk melihat perubahan kualitas udara sepanjang waktu.
+      3. Pemantauan Status Perangkat: Dalam situasi di mana Anda ingin memvisualisasikan status perangkat IoT, seperti perbandingan perangkat yang aktif, 
+      perangkat dalam pemeliharaan, dan perangkat yang sedang mati, grafik pie dapat digunakan untuk memperlihatkan persentase masing-masing status.
     </p>
 
     <p>
-      4. Pemantauan Konsumsi Energi: IoT digunakan untuk mengukur dan mengelola konsumsi energi dalam bangunan dan industri. 
-      Line chart dapat memberikan wawasan tentang konsumsi energi harian atau mingguan, yang dapat membantu dalam penghematan energi.
-    </p>
-
-    <p>
-      5. Pemantauan Kinerja Perangkat: Dalam konteks IoT, Anda dapat menggunakan line chart untuk melacak kinerja perangkat IoT, 
-      seperti latensi komunikasi, kecepatan data, atau penggunaan sumber daya perangkat seiring waktu.
-    </p>
-
-    <p>
-      6. Pemantauan Kualitas Air dalam Akuarium: Jika Anda memiliki sistem IoT untuk mengontrol kualitas air dalam akuarium, 
-      Anda dapat menggunakan line chart untuk memantau parameter seperti pH, suhu, dan tingkat oksigen dalam air.
-    </p>
-
-    <p>
-      Line chart membantu Anda melihat tren, fluktuasi, dan pola dalam data IoT, yang dapat membantu dalam pengambilan keputusan yang lebih baik, pemeliharaan perangkat, dan identifikasi masalah. 
-      Selain itu, mereka memudahkan komunikasi hasil pemantauan dengan pemangku kepentingan atau pengguna akhir yang tidak teknis, 
-      karena line chart adalah salah satu metode visualisasi data yang mudah dipahami dan populer.
+      Namun, perlu diingat bahwa penggunaan grafik pie dalam banyak konteks IoT mungkin tidak efektif. 
+      Ini karena grafik pie cenderung lebih cocok untuk situasi di mana Anda memiliki beberapa kategori yang tidak terlalu banyak dan persentase relatifnya mudah dipahami. 
+      Dalam IoT, data seringkali bersifat kontinu atau berkisar pada banyak titik data, yang dapat sulit direpresentasikan dengan baik dalam bentuk grafik pie. 
+      Oleh karena itu, alternatif visualisasi data seperti grafik garis, batang, atau scatter plot mungkin lebih cocok dalam banyak kasus IoT.
     </p>
     
     <div class="card">
@@ -174,7 +160,7 @@
   </script>
 
 <div class="container">
-  <h1 class="fw-bold">Cara Membuat Line Chart secara Real Time</h1>
+  <h1 class="fw-bold">Cara Membuat Pie Chart secara Real Time</h1>
 
   <p>1. Membuat project laravel terlebih dahulu</p>
 
@@ -194,7 +180,7 @@
   </p>
 
   <p>
-    5. View disini dalam blade.php yang berfungsi untuk menampilkan line chart
+    5. View disini dalam blade.php yang berfungsi untuk menampilkan bar chart
   </p>
   
   <p>
@@ -204,13 +190,17 @@
     Kode SQL ini ditambahkan dalam "Event Scheduler" dalam phpmyadmin.
   </p>
 
+  <p>
+    <a href="https://github.com/bimabs28/linechart-realtime">GitHub Pie chart real time</a>
+  </p>
+
   <script>
     var labels = @json($labels);
     var electrical_conductivity = @json($electrical_conductivity);
 
     var ctx = document.getElementById("ecChart").getContext('2d');
     var ecChart = new Chart(ctx, {
-      type: 'line',
+      type: 'pie',
       data: {
         labels: labels,
         datasets: [{

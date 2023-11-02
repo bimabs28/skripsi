@@ -5,10 +5,50 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 
   <div class="container">
-    <h1 class="fw-bold">Lorem Ipsum</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat voluptatibus quod, dicta error reiciendis explicabo
-      facere minus vero molestias, neque eaque totam incidunt excepturi quisquam, dolores eligendi? Qui, ut architecto!
+    <h1 class="fw-bold">Bar Chart</h1>
+    <p>Bar chart adalah jenis visualisasi data yang sering digunakan dalam Internet of Things (IoT) untuk menganalisis 
+      dan mempresentasikan data yang berhubungan dengan sensor, perangkat, atau aplikasi IoT. 
+      Berikut ini adalah beberapa contoh penggunaan bar chart dalam IoT:
     </p>
+
+    <p>
+      1. Monitoring Konsumsi Energi: IoT sering digunakan untuk mengukur dan mengelola konsumsi energi di berbagai konteks, termasuk rumah pintar dan industri. 
+      Bar chart dapat digunakan untuk membandingkan konsumsi energi antara perangkat, area, atau periode waktu tertentu, 
+      memungkinkan pemilik atau pengelola untuk mengidentifikasi sumber konsumsi yang signifikan.
+    </p>
+
+    <p>
+      2. Pemantauan Kualitas Udara: Sensor kualitas udara IoT dapat mengukur berbagai parameter seperti partikel debu, konsentrasi gas, atau indeks polusi. 
+      Bar chart dapat digunakan untuk membandingkan tingkat parameter tersebut di lokasi yang berbeda atau selama periode waktu yang berbeda.
+    </p>
+
+    <p>
+      3. Keadaan Sumber Daya: IoT digunakan untuk mengelola sumber daya seperti air, listrik, atau bahan bakar. 
+      Bar chart dapat membantu dalam membandingkan penggunaan sumber daya antara berbagai entitas, 
+      seperti perangkat atau bangunan, dan mengidentifikasi pola penggunaan yang tidak efisien.
+    </p>
+
+    <p>
+      4. Monitoring Kualitas Air dalam Pertanian: Dalam pertanian berbasis IoT, bar chart dapat digunakan untuk membandingkan parameter seperti tingkat 
+      kelembaban tanah atau kandungan nutrisi dalam tanaman pada berbagai lokasi pertanian.
+    </p>
+
+    <p>
+      5. Pemantauan Stok Barang: IoT dapat digunakan untuk memantau stok barang di gudang atau toko. Bar chart dapat membantu dalam melacak stok barang yang tersedia, 
+      membandingkannya dengan pesanan, dan mengidentifikasi barang yang perlu diisi ulang.
+    </p>
+
+    <p>
+      6. Keamanan IoT: Bar chart dapat digunakan untuk menganalisis data keamanan seperti jumlah serangan siber yang berhasil diblokir, 
+      jenis serangan yang paling umum, atau tingkat lalu lintas jaringan yang mencurigakan.
+    </p>
+
+    <p>
+      Bar chart membantu dalam membandingkan data dengan cara yang mudah dipahami, yang sangat penting dalam pengambilan keputusan dan pemantauan IoT. 
+      Mereka juga membantu dalam mengidentifikasi tren, perbedaan, dan pola dalam data, 
+      yang bisa menjadi dasar untuk pengoptimalan dan perbaikan berkelanjutan dalam solusi IoT.
+    </p>
+
     <div class="card">
       <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -18,7 +58,13 @@
           <button class="nav-link tablink" onclick="openContent(event, 'controller')">Controller</button>
         </li>
         <li class="nav-item">
+          <button class="nav-link tablink" onclick="openContent(event, 'chart_controller')">Chart Controller</button>
+        </li>
+        <li class="nav-item">
           <button class="nav-link tablink" onclick="openContent(event, 'view')">View</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link tablink" onclick="openContent(event, 'query')">Query</button>
         </li>
       </ul>
       <div class="card-body">
@@ -28,8 +74,14 @@
         <div class="p-3 tabcontent card-body" id="controller">
           <script src="https://gist.github.com/bimabs28/a3e8130b9e08a377b0e9bfbf8c3047de.js"></script>
         </div>
+        <div class="p-3 tabcontent card-body" id="chart_controller">
+          <script src="https://gist.github.com/bimabs28/f4884bc3d5a7682fd729b55f150e2982.js"></script>
+        </div>
         <div class="p-3 tabcontent card-body" id="view">
           <script src="https://gist.github.com/bimabs28/e52f670df96fcbfff6797f207b471bc5.js"></script>
+        </div>
+        <div class="p-3 tabcontent card-body" id="query">
+          <script src="https://gist.github.com/bimabs28/62681dfc5ebee1025395cb2233fd0238.js"></script>
         </div>
       </div>
     </div>
@@ -122,12 +174,47 @@
     });
   </script>
 
+<div class="container">
+  <h1 class="fw-bold">Cara Membuat Bar Chart secara Real Time</h1>
+
+  <p>1. Membuat project laravel terlebih dahulu</p>
+
+  <p>
+    2. Isikan Models seperti pada text editor diatas, untuk nama class disesuaikan dengan nama model masing-masing dan 
+    protected $table dapat disesuaikan dengan database masing-masing. 
+    Model disini berfungsi untuk pengelolaan data dalam database.
+  </p>
+
+  <p>3. Isikan Controller seperti pada text editor diatas, sesuaikan kembali nama class
+    dan nama dari database dari tabel yang akan digunakan, controller berfungsi sebagai pengontrol alur aplikasi antara
+    model dan view.
+  </p>
+
+  <p>
+    4. Selanjutnya ada Chart Controller yang berfungsi sebagai pengatur real timenya
+  </p>
+
+  <p>
+    5. View disini dalam blade.php yang berfungsi untuk menampilkan bar chart
+  </p>
+  
+  <p>
+    6. Kode SQL atau query diatas memasukkan data dengan nilai acak ke dalam kolom 
+    "ph_level" dan menambahkan waktu saat ini ke dalam kolom "time_ph" dalam tabel "tbl_ph." 
+    Hal ini sering digunakan untuk menambahkan data simulasi atau data sensor ke dalam tabel dalam basis data.
+    Kode SQL ini ditambahkan dalam "Event Scheduler" dalam phpmyadmin.
+  </p>
+
+  <p>
+    <a href="https://github.com/bimabs28/barchart-realtime">GitHub Bar chart real time</a>
+  </p>
+
   <script>
     var labels = @json($labels);
     var ph_data = @json($ph_data);
     var ctx = document.getElementById("phChart").getContext('2d');
     var phChart = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: labels,
         datasets: [{

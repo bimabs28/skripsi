@@ -21,13 +21,13 @@ use App\Http\Controllers\PHController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/chart/humidity', [HumidityController::class, 'index']) -> name ('humidity');
-Route::get('/chart/line_chart', [ECController::class, 'index']) -> name ('line_chart');
-Route::get('/chart/ph', [PHController::class, 'index']) -> name ('ph');
+Route::get('/chart/radar_chart', [HumidityController::class, 'index']) -> name ('radar_chart');
+Route::get('/chart/pie_chart', [ECController::class, 'index']) -> name ('pie_chart');
+Route::get('/chart/bar_chart', [PHController::class, 'index']) -> name ('bar_chart');
 Route::get('/chart', [ChartController::class, 'index']) -> name ('chart');
 Route::get('/readdata', [ChartController::class, 'readdata']) -> name ('readdata');
 Route::get('/readdata2', [ChartController::class, 'readdata2']) -> name ('readdata2');
 Route::get('/readdata3', [ChartController::class, 'readdata3']) -> name ('readdata3');
 Route::get('/readdata4', [ChartController::class, 'readdata4']) -> name ('readdata4');
-Route::get('/chart/luminosity', [LuxController::class, 'index'])-> name('lux');
+Route::get('/chart/line_chart', [LuxController::class, 'index'])-> name('line_chart');
 Route::get('/chart2', [ChartController2::class, 'index']) -> name ('chart2');
