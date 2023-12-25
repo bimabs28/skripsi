@@ -159,7 +159,7 @@
   </p>
 
   <p>
-    <a href="https://github.com/bimabs28/linechart-realtime">GitHub Radar chart real time</a>
+    <a href="https://github.com/bimabs28/radarchart-realtime">GitHub Radar chart real time</a>
   </p>
 
 

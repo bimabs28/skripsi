@@ -191,7 +191,7 @@
   </p>
 
   <p>
-    <a href="https://github.com/bimabs28/linechart-realtime">GitHub Pie chart real time</a>
+    <a href="https://github.com/bimabs28/piechart-realtime">GitHub Pie chart real time</a>
   </p>
 
   <script>
